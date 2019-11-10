@@ -41,7 +41,7 @@ class Entrada(args: Array<String>) {
 
     fun lePlanilha(caminhoArq: String, qtdCelulas: Int): Array<List<String>> {
         val numLinhas = qtdLinhas(caminhoArq)
-        val planilha = Array(numLinhas) { listOf<String>() }
+        val planilha = Array(numLinhas) { List(qtdCelulas) { String() } }
         val leitor = BufferedReader(FileReader(caminhoArq))
         var linhaLida: String? = leitor.readLine() //remove a linha com cabecalho
         var i = 0
