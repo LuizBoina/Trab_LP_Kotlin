@@ -1,9 +1,9 @@
 package ufes
 
-class Curso(campos: Array<String>) {
+class Curso(campos: List<String>) {
     val cod: Int = Integer.parseInt(campos[0].trim())
     val nome = campos[1].trim()
-    val discente = HashMap<String, Discente>()
+    val discente = HashMap<Int, Discente>()
     val disciplina = HashMap<String, Disciplina>()
     var ehGrad: Boolean = false
         private set
@@ -28,5 +28,5 @@ class Curso(campos: Array<String>) {
 
     fun adicionaDisciplinaNoCurso(disci: Disciplina) = disciplina.put(disci.cod, disci)
 
-    fun adicionaDiscenteNoCurso(disce: Discente) = discente.put(disce.nome, disce)
+    fun adicionaDiscenteNoCurso(disce: Discente) = discente.put(disce.matricula, disce)
 }

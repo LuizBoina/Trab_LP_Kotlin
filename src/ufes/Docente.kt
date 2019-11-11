@@ -1,6 +1,10 @@
 package ufes
 
-class Docente(campos: Array<String>) {
+import java.util.ArrayList
+
+
+
+class Docente(campos: List<String>) {
     val cod = Integer.parseInt(campos[0].trim())
     val nome = campos[1].trim()
     val departamento = campos[2].trim()
@@ -28,5 +32,13 @@ class Docente(campos: Array<String>) {
 
     fun getQtdProdCientificasQualificadas(): Int = producaoCientifica.filter { it.value.qualificada }.size
     fun getQtdProdCientificasNQualificadas(): Int = producaoCientifica.size - getQtdProdCientificasQualificadas()
-    fun getOrientaPos(): List<OrientaPos> = orientacoes.filterIsInstance<OrientaPos>()
+    //    fun getOrientaPos(): List<OrientaPos> = orientacoes.filterIsInstance<OrientaPos>()
+    fun getOrientaPos(): List<OrientaPos> {
+        val oriPos = ArrayList<OrientaPos>()
+        for (ori in orientacoes) {
+            if (ori is OrientaPos)
+                oriPos.add(ori)
+        }
+        return oriPos
+    }
 }

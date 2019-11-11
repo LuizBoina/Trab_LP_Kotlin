@@ -43,11 +43,12 @@ class Entrada(args: Array<String>) {
         val numLinhas = qtdLinhas(caminhoArq)
         val planilha = Array(numLinhas) { List(qtdCelulas) { String() } }
         val leitor = BufferedReader(FileReader(caminhoArq))
-        var linhaLida: String? = leitor.readLine() //remove a linha com cabecalho
+        leitor.readLine() //remove a linha com cabecalho
+        var linhaLida: String? = leitor.readLine()
         var i = 0
         while (linhaLida != null) {
+            planilha[i++] = linhaLida!!.split(";")
             linhaLida = leitor.readLine()
-            planilha[i++] = linhaLida.split(";")
         }
         leitor.close()
         return planilha
